@@ -1,3 +1,22 @@
+/* Portfolio navigation buttons (bottom of C++ Projects page) */
+.portfolio-btn {
+    background: var(--colour-primary, #2c3e50);
+    color: #fff !important;
+    padding: 0.6em 1.4em;
+    border: none;
+    border-radius: 0.4em;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.08);
+    cursor: pointer;
+    display: inline-block;
+}
+.portfolio-btn:hover:not([style*="pointer-events:none"]) {
+    background: var(--colour-accent, #e67e22);
+    color: #fff;
+}
 /* ============================================================
    style.css — Shared stylesheet for Jordan's Personal Website
    TECH1101 Final Project
