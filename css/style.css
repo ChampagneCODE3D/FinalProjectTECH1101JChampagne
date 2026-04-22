@@ -214,6 +214,66 @@ footer {
     outline: 2px solid var(--colour-accent, #e67e22);
 }
 
+/* ---------- Page Table of Contents ---------- */
+.page-toc {
+    background: #fff;
+    border-left: 4px solid var(--colour-accent, #e67e22);
+    border-radius: 0.4em;
+    padding: 1em 1.5em;
+    margin: 1.5em auto;
+    max-width: 480px;
+}
+.page-toc h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5em;
+    color: var(--colour-primary, #2c3e50);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.page-toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.page-toc ul li {
+    margin: 0.3em 0;
+}
+.page-toc ul li a {
+    color: var(--colour-accent, #e67e22);
+    text-decoration: none;
+    font-weight: 500;
+}
+.page-toc ul li a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Floating Back-to-Top Button ---------- */
+#float-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 1.5rem;
+    background: var(--colour-accent, #e67e22);
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 0.55em 1.1em;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, background 0.2s;
+    z-index: 999;
+}
+#float-top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+#float-top-btn:hover {
+    background: var(--colour-primary, #2c3e50);
+}
+
 /* ============================================================
    Resume Page Components
    ============================================================ */

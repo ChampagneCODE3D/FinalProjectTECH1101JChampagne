@@ -36,8 +36,31 @@
             <p>My personal quick-reference notes for JavaScript</p>
         </div>
 
+        <!-- ---- Table of Contents ---- -->
+        <nav class="page-toc" aria-label="Page sections">
+            <h2>On This Page</h2>
+            <ul>
+                <li><a href="#s1">1. Variables — var, let, const</a></li>
+                <li><a href="#s2">2. Data Types</a></li>
+                <li><a href="#s3">3. Functions</a></li>
+                <li><a href="#s4">4. if / else / else if</a></li>
+                <li><a href="#s5">5. for Loop</a></li>
+                <li><a href="#s6">6. while Loop</a></li>
+                <li><a href="#s7">7. Arrays</a></li>
+                <li><a href="#s8">8. Objects</a></li>
+                <li><a href="#s9">9. DOM Selection</a></li>
+                <li><a href="#s10">10. Event Listeners</a></li>
+                <li><a href="#s11">11. Changing DOM Content &amp; Style</a></li>
+                <li><a href="#s12">12. Template Literals</a></li>
+                <li><a href="#s13">13. Array Methods — forEach, map, filter</a></li>
+                <li><a href="#s14">14. console.log &amp; Debugging</a></li>
+                <li><a href="#s15">15. Ternary Operator</a></li>
+                <li><a href="#s16">16. Null &amp; Undefined</a></li>
+            </ul>
+        </nav>
+
         <!-- 1 -->
-        <section class="cheat-entry">
+        <section id="s1" class="cheat-entry">
             <h2>1. Variables — var, let, const</h2>
             <p>Three ways to declare variables. Prefer <code>const</code> by default, use <code>let</code> when the value needs to change, and avoid <code>var</code> (function-scoped and hoisted in confusing ways).</p>
             <p>If you've used C++, <code>const</code> in JavaScript works similarly to <code>const std::string</code> — it locks the binding so the value can't be reassigned. This keeps your code more modular and reduces clutter in the main logic, the same way declaring constants outside of <code>main()</code> in C++ helps keep things clean and readable.</p>
@@ -47,7 +70,7 @@ var old = true;          // avoid — function-scoped</code></pre>
         </section>
 
         <!-- 2 -->
-        <section class="cheat-entry">
+        <section id="s2" class="cheat-entry">
             <h2>2. Data Types</h2>
             <p>JavaScript has 7 primitive types plus objects. Unlike C++, you don't declare the type when creating a variable — JavaScript figures it out at runtime (it's <em>dynamically typed</em>). In C++ you'd write <code>int x = 42;</code> or <code>std::string name = "Jordan";</code>, but in JavaScript it's just <code>let x = 42;</code> regardless of type. Use <code>typeof</code> to check what type a value is at any point.</p>
             <pre><code>typeof "hello"      // "string"
@@ -62,7 +85,7 @@ typeof []           // "object"</code></pre>
         </section>
 
         <!-- 3 -->
-        <section class="cheat-entry">
+        <section id="s3" class="cheat-entry">
             <h2>3. Functions</h2>
             <p>Functions in JavaScript work similarly to C++ functions — they take parameters, do work, and return a value. The main differences: no return type is declared (JavaScript is dynamically typed), and you have a shorthand called an <em>arrow function</em> (<code>=&gt;</code>) which is similar in spirit to a C++ lambda expression (<code>[](){}</code>). Arrow functions are great for short, one-liner operations.</p>
 <pre><code>// Declaration
@@ -80,7 +103,7 @@ console.log(greet("Jordan")); // Hello, Jordan
         </section>
 
         <!-- 4 -->
-        <section class="cheat-entry">
+        <section id="s4" class="cheat-entry">
             <h2>4. if / else / else if</h2>
             <p>Conditional logic works almost identically to C++. The syntax — <code>if (condition) { }</code> — is the same. The main difference is that JavaScript is more relaxed about what counts as "true" or "false" (called <em>truthy/falsy</em>). For example, an empty string <code>""</code> or <code>0</code> is falsy in JavaScript, similar to how <code>0</code> evaluates to false in a C++ boolean context.</p>
             <pre><code>const temp = 15;
@@ -95,7 +118,7 @@ if (temp > 25) {
         </section>
 
         <!-- 5 -->
-        <section class="cheat-entry">
+        <section id="s5" class="cheat-entry">
             <h2>5. for Loop</h2>
             <p>The <code>for</code> loop syntax is identical to C++ — <code>for (init; condition; increment)</code>. If you're comfortable with C++ loops, this is a direct copy. One difference: use <code>let</code> instead of <code>int</code> for the loop counter since JavaScript doesn't have typed declarations.</p>
             <pre><code>for (let i = 0; i &lt; 5; i++) {
@@ -105,7 +128,7 @@ if (temp > 25) {
         </section>
 
         <!-- 6 -->
-        <section class="cheat-entry">
+        <section id="s6" class="cheat-entry">
             <h2>6. while Loop</h2>
             <p>The <code>while</code> loop is also identical in structure to C++. Same rule applies: make sure the condition eventually becomes false or you'll get an infinite loop — just like in C++. A common use case is waiting for user input or polling a condition, similar to a control loop in a PLC or automation context.</p>
             <pre><code>let count = 0;
@@ -117,7 +140,7 @@ while (count &lt; 3) {
         </section>
 
         <!-- 7 -->
-        <section class="cheat-entry">
+        <section id="s7" class="cheat-entry">
             <h2>7. Arrays</h2>
             <p>JavaScript arrays are similar to C++ <code>std::vector</code> — they're dynamic (no fixed size), zero-indexed, and can grow or shrink. Unlike C++ arrays where you'd declare a type like <code>int arr[5]</code>, JavaScript arrays can hold mixed types and resize automatically. <code>push()</code> is like <code>push_back()</code> in a vector, and <code>pop()</code> removes the last element just like <code>pop_back()</code>.</p>
             <pre><code>const cats = ["Luna", "Mochi", "Pixel"];
@@ -128,7 +151,7 @@ console.log(cats.length);   // 3</code></pre>
         </section>
 
         <!-- 8 -->
-        <section class="cheat-entry">
+        <section id="s8" class="cheat-entry">
             <h2>8. Objects</h2>
             <p>JavaScript objects are the closest thing to a C++ <code>struct</code> — they group related data under one name using key-value pairs. Where in C++ you'd define a struct with typed members (<code>struct Cat { string name; int age; };</code>), in JavaScript you just write it inline with no type declarations. Objects can also hold functions as values (called <em>methods</em>), making them similar to a simple C++ class as well.</p>
             <pre><code>const cat = {
@@ -142,7 +165,7 @@ console.log(cat["age"]);     // 4</code></pre>
         </section>
 
         <!-- 9 -->
-        <section class="cheat-entry">
+        <section id="s9" class="cheat-entry">
             <h2>9. DOM Selection</h2>
             <p>The DOM (Document Object Model) is how JavaScript interacts with the HTML on the page — there's no direct equivalent in C++ since C++ doesn't run in a browser. Think of it like getting a pointer or reference to an HTML element so you can read or modify it. <code>getElementById</code> is the most direct — like looking up a variable by its exact name. <code>querySelector</code> is more flexible, accepting any CSS selector.</p>
             <pre><code>// By ID
@@ -156,7 +179,7 @@ const items = document.querySelectorAll(".nav-link");</code></pre>
         </section>
 
         <!-- 10 -->
-        <section class="cheat-entry">
+        <section id="s10" class="cheat-entry">
             <h2>10. Event Listeners</h2>
             <p>Event listeners are JavaScript's way of responding to user actions — there's no direct C++ equivalent unless you've worked with GUI frameworks or interrupt-driven systems (which is actually similar in concept to hardware interrupts in PLC/automation programming). Instead of polling in a loop to check if something happened, you register a function that fires automatically when the event occurs — just like an interrupt service routine (ISR).</p>
             <pre><code>const btn = document.getElementById("myBtn");
@@ -170,7 +193,7 @@ btn.addEventListener("click", () => alert("Clicked!"));</code></pre>
         </section>
 
         <!-- 11 -->
-        <section class="cheat-entry">
+        <section id="s11" class="cheat-entry">
             <h2>11. Changing DOM Content &amp; Style</h2>
             <p>Once you have a reference to an HTML element (see Entry 9), you can read or change almost anything about it. This is unique to JavaScript in the browser — C++ has no equivalent since it doesn't render HTML. Think of it like directly writing to a register or output in a PLC: you grab the reference, then set the value. <code>textContent</code> is safe for plain text; <code>innerHTML</code> lets you inject raw HTML but use it carefully to avoid security issues.</p>
             <pre><code>const heading = document.querySelector("h1");
@@ -185,7 +208,7 @@ heading.classList.toggle("active");      // toggle CSS class</code></pre>
         </section>
 
         <!-- 12 -->
-        <section class="cheat-entry">
+        <section id="s12" class="cheat-entry">
             <h2>12. Template Literals</h2>
             <p>Template literals replace messy string concatenation with a cleaner embedded syntax. In C++ you'd use <code>std::cout &lt;&lt; "Hi " &lt;&lt; name &lt;&lt; ", score: " &lt;&lt; score;</code> which gets verbose fast. JavaScript's template literals use backticks and <code>${}</code> to embed variables directly in the string — much more readable, especially for building dynamic HTML or messages.</p>
             <pre><code>const name = "Jordan";
@@ -199,7 +222,7 @@ console.log(`Hi ${name}, your score is ${score}`);</code></pre>
         </section>
 
         <!-- 13 -->
-        <section class="cheat-entry">
+        <section id="s13" class="cheat-entry">
             <h2>13. Array Methods — forEach, map, filter</h2>
             <p>These are higher-order functions built into JavaScript arrays — there's no direct equivalent in basic C++, though the C++ Standard Library has similar algorithms (<code>std::for_each</code>, <code>std::transform</code>, <code>std::copy_if</code>). They let you process arrays without writing manual <code>for</code> loops, which keeps code shorter and easier to read. <code>forEach</code> just iterates, <code>map</code> transforms and returns a new array, and <code>filter</code> returns only items that pass a test.</p>
             <pre><code>const nums = [1, 2, 3, 4, 5];
@@ -215,7 +238,7 @@ const evens = nums.filter(n => n % 2 === 0); // [2,4]</code></pre>
         </section>
 
         <!-- 14 -->
-        <section class="cheat-entry">
+        <section id="s14" class="cheat-entry">
             <h2>14. console.log &amp; Debugging</h2>
             <p>In C++ you'd use <code>std::cout &lt;&lt; value;</code> to print output for debugging. In JavaScript, <code>console.log()</code> is the equivalent — it prints to the browser's DevTools console (press F12 to open it). <code>console.warn</code> and <code>console.error</code> add colour-coded severity levels. The <code>debugger</code> statement is like setting a breakpoint in Visual Studio — execution pauses there so you can inspect variables step by step.</p>
             <pre><code>console.log("Hello");           // print a value
@@ -228,7 +251,7 @@ debugger;</code></pre>
         </section>
 
         <!-- 15 -->
-        <section class="cheat-entry">
+        <section id="s15" class="cheat-entry">
             <h2>15. Ternary Operator</h2>
             <p>The ternary operator exists in C++ too — the syntax is identical: <code>condition ? valueIfTrue : valueIfFalse</code>. It's a compact one-liner that replaces a simple <code>if/else</code>. Both languages use it the same way, so if you've written it in C++ it works exactly the same in JavaScript. Great for assigning a value based on a condition without the extra lines of a full <code>if/else</code> block.</p>
             <pre><code>const age = 20;
@@ -240,7 +263,7 @@ console.log(status); // "adult"
         </section>
 
         <!-- 16 (bonus) -->
-        <section class="cheat-entry">
+        <section id="s16" class="cheat-entry">
             <h2>16. Null &amp; Undefined</h2>
             <p>C++ has <code>nullptr</code> for pointers that point to nothing. JavaScript has two similar concepts: <code>null</code> (intentionally set to "no value") and <code>undefined</code> (declared but never assigned — JavaScript's version of an uninitialised variable). In C++ an uninitialised variable holds garbage memory; in JavaScript it safely holds <code>undefined</code>. Use <code>===</code> (strict equality) when checking for null to avoid JavaScript's loose comparison quirks.</p>
             <pre><code>let x;
@@ -259,6 +282,9 @@ console.log(y === null); // true (strict)</code></pre>
         <p>&copy; 2026 Jordan Champagne — TECH1101 Final Project</p>
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'});" class="return-top-btn">Return to Top</button>
     </footer>
+
+    <!-- Floating back-to-top button -->
+    <button id="float-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8679; Top</button>
 
     <script src="js/main.js"></script>
 </body>

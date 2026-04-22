@@ -147,3 +147,16 @@ function evaluateTrapTemperature(tempC) {
         if (e.key === 'Enter') btn.click();
     });
 })();
+
+/* ---------- Floating Back-to-Top Button ---------- */
+(function initFloatTopBtn() {
+    const btn = document.getElementById('float-top-btn');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+})();
