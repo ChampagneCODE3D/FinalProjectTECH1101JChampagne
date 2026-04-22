@@ -45,11 +45,16 @@
                 <strong>Trap-Neuter-Return (TNR)</strong> program.
             </p>
             <p>
-                <img
-                    src="https://placehold.co/600x300?text=MEOW+Foundation+Cat"
-                    alt="A cat available for adoption through MEOW Foundation"
-                    class="content-img"
-                >
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.964964899956!2d-114.0861536842326!3d51.09023207957037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716f1e2e2e2e2f%3A0x2e2e2e2e2e2e2e2e!2sMEOW%20Foundation!5e0!3m2!1sen!2sca!4v1713810000000!5m2!1sen!2sca"
+                    width="100%"
+                    height="300"
+                    style="border:0;border-radius:0.5em;margin:1em 0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="MEOW Foundation Location"
+                ></iframe>
             </p>
         </section>
 
@@ -122,25 +127,43 @@
 
             <div class="temp-checker-card">
                 <div class="temp-input-row">
-                    <label for="temp-input">Current Temperature:</label>
+                    <label for="temp-input">Temperature:</label>
                     <input
                         type="number"
                         id="temp-input"
                         placeholder="e.g. 12"
-                        aria-label="Enter current temperature"
+                        aria-label="Enter temperature"
                     >
                     <select id="temp-unit" aria-label="Temperature unit">
                         <option value="C">&deg;C</option>
                         <option value="F">&deg;F</option>
                     </select>
+                    <label for="trap-date" style="margin-left:1em;">Date:</label>
+                    <input
+                        type="date"
+                        id="trap-date"
+                        aria-label="Select date to check"
+                        style="min-width:140px;"
+                    >
                     <button id="check-temp-btn" class="btn-primary">Check</button>
                 </div>
 
                 <!-- Result is injected here by JavaScript -->
                 <div id="temp-result" class="temp-result" aria-live="polite" hidden></div>
-
                 <!-- Show the current thresholds so users understand the logic -->
                 <p class="temp-note" id="temp-threshold-note"></p>
+                <div class="trap-safety-tips" style="margin-top:1.5em;">
+                    <h3>Trapping Safety Tips (Calgary)</h3>
+                    <ul>
+                        <li>Only set traps between April 1 and October 15, and when temperatures are 0°C to 25°C.</li>
+                        <li>Set traps in a sheltered or shaded area.</li>
+                        <li>Check traps more than once a day.</li>
+                        <li>Provide food, water, and care for any trapped cat.</li>
+                        <li>Take sick or injured cats to a vet immediately.</li>
+                        <li>Have your trap inspected annually by a Peace Officer at the Animal Services Centre.</li>
+                    </ul>
+                    <p style="font-size:0.95em;">Source: <a href="https://www.calgary.ca/pets/cat-concerns.html" target="_blank" rel="noopener">City of Calgary - Cat Concerns</a></p>
+                </div>
             </div>
         </section>
 
