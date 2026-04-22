@@ -195,6 +195,25 @@ footer {
     font-size: 0.85rem;
 }
 
+.return-top-btn {
+    display: block;
+    margin: 0 auto 0.75rem auto;
+    background: var(--colour-accent, #e67e22);
+    color: #fff;
+    border: none;
+    border-radius: 0.4em;
+    padding: 0.5em 1.7em;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.return-top-btn:hover {
+    background: #fff;
+    color: var(--colour-accent, #e67e22);
+    outline: 2px solid var(--colour-accent, #e67e22);
+}
+
 /* ============================================================
    Resume Page Components
    ============================================================ */
