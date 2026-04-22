@@ -464,6 +464,75 @@ footer {
 }
 
 /* ============================================================
+   Home Page — Nav Cards
+   ============================================================ */
+#about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f59e0b;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .profile-img {
+        margin: 0 auto;
+    }
+}
+
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: var(--card-bg, #fff);
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 3rem 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.nav-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.nav-card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--heading, #1e293b);
+}
+
+.nav-card p {
+    font-size: 1rem;
+    color: var(--text-muted, #64748b);
+    margin: 0;
+}
+
+/* ============================================================
    Cheat Sheet Entries
    ============================================================ */
 .cheat-entry {
