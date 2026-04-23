@@ -424,10 +424,11 @@
     }
 
     function busNextAge() {
-        const val = parseInt(document.getElementById('bus-age').value, 10);
+        const raw = document.getElementById('bus-age').value.trim();
+        const val = Number(raw);
         const err = document.getElementById('bus-err-age');
-        if (isNaN(val) || val < 0 || val > 123) {
-            err.textContent = 'Please enter a valid age (0–123).';
+        if (raw === '' || !Number.isInteger(val) || val < 0 || val > 123) {
+            err.textContent = 'Please enter a whole-number age (0-123).';
             return;
         }
         err.textContent = '';
