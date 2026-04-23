@@ -153,7 +153,9 @@ function evaluateTrapTemperature(tempC) {
     const btn = document.getElementById('float-top-btn');
     if (!btn) return;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
+        const scrolledDown = window.scrollY > 200;
+        const nearBottom = (window.scrollY + window.innerHeight) >= (document.body.scrollHeight - 300);
+        if (scrolledDown && !nearBottom) {
             btn.classList.add('visible');
         } else {
             btn.classList.remove('visible');
