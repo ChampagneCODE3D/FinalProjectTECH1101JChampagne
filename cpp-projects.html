@@ -322,20 +322,49 @@
         transform: translateY(1px);
     }
 
+    .bus-modal-panel {
+        max-width: 620px;
+    }
+
+    .bus-rules-table {
+        table-layout: fixed;
+    }
+
+    .bus-rules-table th,
+    .bus-rules-table td {
+        vertical-align: top;
+    }
+
+    .bus-rules-table th:nth-child(1),
+    .bus-rules-table td:nth-child(1) {
+        width: 26%;
+        white-space: nowrap;
+    }
+
+    .bus-rules-table th:nth-child(3),
+    .bus-rules-table td:nth-child(3) {
+        width: 18%;
+        white-space: nowrap;
+        text-align: right;
+    }
+
     /* Tighten cells on narrow viewports */
     @media (max-width: 480px) {
         #days-picker button { padding: 0.5rem 0.1rem; }
         #days-picker button .day-abbrev { font-size: 0.55rem; }
         #days-picker button .day-num   { font-size: 0.9rem; }
         .bus-yn-btn { padding: 0.6rem 0.35rem; font-size: 0.95rem; }
+        .bus-modal-panel { max-width: 96%; padding: 1.25rem !important; }
+        .bus-rules-table th:nth-child(1),
+        .bus-rules-table td:nth-child(1) { white-space: normal; }
     }
     </style>
 
     <!-- ===== Bus Pass Calculator Modal ===== -->
     <div id="bus-overlay" role="dialog" aria-modal="true" aria-labelledby="bus-title"
          style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1000;overflow-y:auto;">
-        <div style="background:#2c3e50;color:#ffffff;border:2px solid #e67e22;border-radius:12px;
-                    max-width:480px;width:90%;margin:3rem auto;padding:2rem;position:relative;">
+        <div class="bus-modal-panel" style="background:#2c3e50;color:#ffffff;border:2px solid #e67e22;border-radius:12px;
+                width:90%;margin:3rem auto;padding:2rem;position:relative;">
             <button onclick="closeBusTool()" aria-label="Close"
                     style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;
                            color:#ffffff;font-size:1.5rem;cursor:pointer;line-height:1;">&times;</button>
@@ -350,25 +379,28 @@
                     View Price Rules
                 </summary>
                 <div style="padding:0.25rem 0.8rem 0.8rem;overflow-x:auto;">
-                    <table style="width:100%;border-collapse:collapse;color:#cccccc;font-size:0.84rem;line-height:1.4;">
+                    <p style="margin:0.25rem 0 0.6rem;color:#cccccc;font-size:0.78rem;">
+                        Age key: Child 0-5, Youth 6-17, Adult 18-64, Senior 65+
+                    </p>
+                    <table class="bus-rules-table" style="width:100%;border-collapse:collapse;color:#cccccc;font-size:0.84rem;line-height:1.4;">
                         <thead>
                             <tr style="color:#ffffff;border-bottom:1px solid #e67e22;">
-                                <th style="text-align:left;padding:0.45rem 0.25rem;">Rider Type</th>
-                                <th style="text-align:left;padding:0.45rem 0.25rem;">If...</th>
+                                <th style="text-align:left;padding:0.45rem 0.25rem;">Age Group</th>
+                                <th style="text-align:left;padding:0.45rem 0.25rem;">Eligibility</th>
                                 <th style="text-align:right;padding:0.45rem 0.25rem;">Monthly Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td style="padding:0.35rem 0.25rem;">Child (0&ndash;5)</td><td style="padding:0.35rem 0.25rem;">Any child age 0 to 5</td><td style="padding:0.35rem 0.25rem;text-align:right;">$0</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Youth (6&ndash;17)</td><td style="padding:0.35rem 0.25rem;">Works for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Youth (6&ndash;17)</td><td style="padding:0.35rem 0.25rem;">Does not work for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$80</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Adult (18&ndash;64)</td><td style="padding:0.35rem 0.25rem;">Annual income under $15,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$30</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Adult (18&ndash;64)</td><td style="padding:0.35rem 0.25rem;">Income $15,000+ and works for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Adult (18&ndash;64)</td><td style="padding:0.35rem 0.25rem;">Income $15,000+ and does not work for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$100</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Annual income under $15,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$30</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income $15,000+ and works for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income $15,000+, not a city employee, and under $30,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$70</td></tr>
-                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income $30,000+ and not a city employee</td><td style="padding:0.35rem 0.25rem;text-align:right;">$100</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Child</td><td style="padding:0.35rem 0.25rem;">Any child age 0 to 5</td><td style="padding:0.35rem 0.25rem;text-align:right;">$0</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Adult</td><td style="padding:0.35rem 0.25rem;">Annual income under $15,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$30</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior</td><td style="padding:0.35rem 0.25rem;">Annual income under $15,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$30</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Youth</td><td style="padding:0.35rem 0.25rem;">Works for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Adult</td><td style="padding:0.35rem 0.25rem;">Income $15,000+ and works for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior</td><td style="padding:0.35rem 0.25rem;">Income $15,000+ and works for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior</td><td style="padding:0.35rem 0.25rem;">Income $15,000+, not a city employee, and under $30,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$70</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Youth</td><td style="padding:0.35rem 0.25rem;">Does not work for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$80</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Adult</td><td style="padding:0.35rem 0.25rem;">Income $15,000+ and does not work for the city</td><td style="padding:0.35rem 0.25rem;text-align:right;">$100</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior</td><td style="padding:0.35rem 0.25rem;">Income $30,000+ and not a city employee</td><td style="padding:0.35rem 0.25rem;text-align:right;">$100</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -527,7 +559,7 @@
     }
 
     function busShowResult(category, priceStr) {
-        document.getElementById('bus-category').textContent = 'Rider type: ' + category;
+        document.getElementById('bus-category').textContent = 'Age group: ' + category;
         document.getElementById('bus-price').textContent = priceStr;
         busShow('bus-result');
     }
