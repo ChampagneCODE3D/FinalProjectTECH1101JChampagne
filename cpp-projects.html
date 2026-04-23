@@ -44,21 +44,236 @@
         <section class="cpp-projects-list cpp-downloads-list">
             <div class="cpp-project-card">
                 <h2>Days of the Week</h2>
-                <p>A simple C++ program that demonstrates control flow and user input validation. Inspired by PLC logic and Poka-Yoke principles.</p>
-                <a href="cpp/DaysOfTheWeek.zip" download class="portfolio-btn">DaysOfTheWeek.zip</a>
+                <p>A C++ program using enumerations and switch statements that displays the etymology of each day's name. Features Poka-Yoke input validation and APA 7 references.</p>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;">
+                    <a href="cpp/DaysOfTheWeek.zip" download class="portfolio-btn">DaysOfTheWeek.zip</a>
+                    <button class="portfolio-btn" onclick="openDaysTool()">Try it Live</button>
+                </div>
             </div>
             <div class="cpp-project-card">
                 <h2>Bus Pass Calculator</h2>
-                <p>This C++ program calculates the cost of a bus pass based on user input. It features input validation and clear prompts, applying automation logic to a real-world scenario.</p>
-                <a href="cpp/BusPassCalculator.zip" download class="portfolio-btn">BusPassCalculator.zip</a>
+                <p>A C++ program that calculates monthly bus pass cost based on age, employment, and income. Features multi-language yes/no input, Poka-Yoke validation, and a reusable starter namespace.</p>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;">
+                    <a href="cpp/BusPassCalculator.zip" download class="portfolio-btn">BusPassCalculator.zip</a>
+                    <button class="portfolio-btn" onclick="openBusTool()">Try it Live</button>
+                </div>
             </div>
             <div class="cpp-project-card">
                 <h2>Statistical Analysis Tool</h2>
                 <p>A C++ tool that reads a dataset of up to 50 numbers and calculates the mean, median, and mode(s), demonstrating array logic and statistical computation.</p>
-                <a href="cpp/DataSetMax50.zip" download class="portfolio-btn">DataSetMax50.zip</a>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;">
+                    <a href="cpp/DataSetMax50.zip" download class="portfolio-btn">DataSetMax50.zip</a>
+                    <button class="portfolio-btn" onclick="openStatsTool()">Try it Live</button>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- ===== Statistical Analysis Tool Modal ===== -->
+    <div id="stats-overlay" role="dialog" aria-modal="true" aria-labelledby="stats-title"
+         style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1000;overflow-y:auto;">
+        <div style="background:#1e1e2e;color:#cdd6f4;border:1px solid #6c7086;border-radius:12px;
+                    max-width:540px;width:90%;margin:3rem auto;padding:2rem;position:relative;">
+            <button onclick="closeStatsTool()" aria-label="Close"
+                    style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;
+                           color:#cdd6f4;font-size:1.5rem;cursor:pointer;line-height:1;">&times;</button>
+            <h2 id="stats-title" style="margin-top:0;color:#cba6f7;">Statistical Analysis Tool</h2>
+            <p style="font-size:0.875rem;color:#a6adc8;margin-top:-0.5rem;">
+                JavaScript port of the C++ DataSetMax50 program &mdash; same logic, runs in your browser.
+            </p>
+
+            <!-- Step 1: choose dataset size -->
+            <div id="stats-step1">
+                <label for="stats-count" style="display:block;margin-bottom:0.4rem;">
+                    How many elements in the dataset? (1–50)
+                </label>
+                <input id="stats-count" type="number" min="1" max="50"
+                       style="width:80px;padding:0.4rem;border-radius:6px;border:1px solid #6c7086;
+                              background:#313244;color:#cdd6f4;font-size:1rem;">
+                <button class="portfolio-btn" style="margin-left:0.75rem;" onclick="statsStep2()">Next</button>
+                <p id="stats-err1" style="color:#f38ba8;margin:0.4rem 0 0;min-height:1.2em;"></p>
+            </div>
+
+            <!-- Step 2: enter values -->
+            <div id="stats-step2" style="display:none;">
+                <p id="stats-values-label" style="margin-bottom:0.5rem;"></p>
+                <div id="stats-inputs" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:0.5rem;"></div>
+                <p id="stats-err2" style="color:#f38ba8;margin:0.5rem 0 0;min-height:1.2em;"></p>
+                <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+                    <button class="portfolio-btn" onclick="statsCalculate()">Analyze</button>
+                    <button class="portfolio-btn" onclick="statsReset()" style="background:#45475a;">Back</button>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="stats-results" style="display:none;">
+                <hr style="border-color:#45475a;margin:1rem 0;">
+                <h3 style="color:#a6e3a1;margin-top:0;">Results</h3>
+                <table style="width:100%;border-collapse:collapse;font-size:1rem;">
+                    <tr>
+                        <td style="padding:0.4rem 0.75rem 0.4rem 0;color:#89dceb;width:40%;">Mean (Average)</td>
+                        <td id="res-mean" style="font-weight:bold;"></td>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.4rem 0.75rem 0.4rem 0;color:#89dceb;">Median</td>
+                        <td id="res-median" style="font-weight:bold;"></td>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.4rem 0.75rem 0.4rem 0;color:#89dceb;">Mode(s)</td>
+                        <td id="res-mode" style="font-weight:bold;"></td>
+                    </tr>
+                </table>
+                <p id="res-sorted" style="font-size:0.8rem;color:#6c7086;margin-top:0.75rem;word-break:break-all;"></p>
+                <button class="portfolio-btn" style="margin-top:1rem;" onclick="statsReset()">Analyze Another Dataset</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    /* ===== DataSetMax50 — Interactive JS Port ===== */
+
+    function openStatsTool() {
+        statsReset();
+        document.getElementById('stats-overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('stats-count').focus();
+    }
+
+    function closeStatsTool() {
+        document.getElementById('stats-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // Close modal when clicking outside the panel
+    document.getElementById('stats-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeStatsTool();
+    });
+
+    // Allow Enter key on the count input to advance
+    document.getElementById('stats-count').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') statsStep2();
+    });
+
+    function statsStep2() {
+        const countEl = document.getElementById('stats-count');
+        const err = document.getElementById('stats-err1');
+        const n = parseInt(countEl.value, 10);
+
+        if (isNaN(n) || n < 1 || n > 50) {
+            err.textContent = 'Please enter a whole number between 1 and 50.';
+            countEl.focus();
+            return;
+        }
+        err.textContent = '';
+
+        // Build numeric input fields for each element
+        const container = document.getElementById('stats-inputs');
+        container.innerHTML = '';
+        for (let i = 1; i <= n; i++) {
+            const inp = document.createElement('input');
+            inp.type = 'number';
+            inp.id = 'sv-' + i;
+            inp.placeholder = '#' + i;
+            inp.style.cssText = 'padding:0.4rem;border-radius:6px;border:1px solid #6c7086;' +
+                                'background:#313244;color:#cdd6f4;font-size:0.95rem;width:100%;';
+            inp.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const next = document.getElementById('sv-' + (i + 1));
+                    if (next) next.focus(); else statsCalculate();
+                }
+            });
+            container.appendChild(inp);
+        }
+
+        document.getElementById('stats-values-label').textContent =
+            'Enter ' + n + ' value' + (n > 1 ? 's' : '') + ':';
+        document.getElementById('stats-step1').style.display = 'none';
+        document.getElementById('stats-step2').style.display = 'block';
+        document.getElementById('sv-1').focus();
+    }
+
+    function statsCalculate() {
+        const container = document.getElementById('stats-inputs');
+        const inputs = container.querySelectorAll('input');
+        const data = [];
+        const err = document.getElementById('stats-err2');
+
+        for (let i = 0; i < inputs.length; i++) {
+            const val = parseFloat(inputs[i].value);
+            if (inputs[i].value.trim() === '' || isNaN(val)) {
+                err.textContent = 'Please fill in all fields with valid numbers.';
+                inputs[i].focus();
+                return;
+            }
+            data.push(val);
+        }
+        err.textContent = '';
+
+        // Sort for median and mode (mirrors the C++ std::sort)
+        const sorted = [...data].sort((a, b) => a - b);
+        const n = sorted.length;
+
+        // Mean
+        const sum = sorted.reduce((acc, v) => acc + v, 0);
+        const mean = sum / n;
+
+        // Median
+        let median;
+        if (n % 2 !== 0) {
+            median = sorted[Math.floor(n / 2)];
+        } else {
+            median = (sorted[n / 2 - 1] + sorted[n / 2]) / 2;
+        }
+
+        // Mode — mirrors the C++ consecutive-count algorithm
+        let currentCount = 1;
+        let maxCount = 1;
+        let modes = [];
+
+        for (let i = 1; i < sorted.length; i++) {
+            if (sorted[i] === sorted[i - 1]) {
+                currentCount++;
+            } else {
+                if (currentCount > maxCount) {
+                    maxCount = currentCount;
+                    modes = [sorted[i - 1]];
+                } else if (currentCount === maxCount) {
+                    modes.push(sorted[i - 1]);
+                }
+                currentCount = 1;
+            }
+        }
+        // Check last value
+        if (currentCount > maxCount) {
+            modes = [sorted[sorted.length - 1]];
+        } else if (currentCount === maxCount) {
+            modes.push(sorted[sorted.length - 1]);
+        }
+
+        const modeStr = (maxCount === 1 || modes.length === sorted.length)
+            ? 'none'
+            : modes.join(', ');
+
+        // Display results
+        document.getElementById('res-mean').textContent   = mean % 1 === 0 ? mean : mean.toFixed(4).replace(/\.?0+$/, '');
+        document.getElementById('res-median').textContent = median % 1 === 0 ? median : median.toFixed(4).replace(/\.?0+$/, '');
+        document.getElementById('res-mode').textContent   = modeStr;
+        document.getElementById('res-sorted').textContent = 'Sorted: [' + sorted.join(', ') + ']';
+
+        document.getElementById('stats-step2').style.display  = 'none';
+        document.getElementById('stats-results').style.display = 'block';
+    }
+
+    function statsReset() {
+        document.getElementById('stats-step1').style.display   = 'block';
+        document.getElementById('stats-step2').style.display   = 'none';
+        document.getElementById('stats-results').style.display = 'none';
+        document.getElementById('stats-count').value = '';
+        document.getElementById('stats-err1').textContent = '';
+        document.getElementById('stats-err2').textContent = '';
+        document.getElementById('stats-inputs').innerHTML = '';
+    }
+    </script>
     <footer>
         <div class="portfolio-nav-btns" style="display:flex;gap:1rem;justify-content:center;margin-bottom:1.5rem;">
             <a href="cpp-projects.html" class="portfolio-btn portfolio-btn--active">C++ Projects</a>
@@ -69,5 +284,285 @@
         <p>&copy; 2026 Jordan Champagne — TECH1101 Final Project</p>
     </footer>
     <script src="js/main.js"></script>
+
+    <!-- ===== Bus Pass Calculator Modal ===== -->
+    <div id="bus-overlay" role="dialog" aria-modal="true" aria-labelledby="bus-title"
+         style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1000;overflow-y:auto;">
+        <div style="background:#1e1e2e;color:#cdd6f4;border:1px solid #6c7086;border-radius:12px;
+                    max-width:480px;width:90%;margin:3rem auto;padding:2rem;position:relative;">
+            <button onclick="closeBusTool()" aria-label="Close"
+                    style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;
+                           color:#cdd6f4;font-size:1.5rem;cursor:pointer;line-height:1;">&times;</button>
+            <h2 id="bus-title" style="margin-top:0;color:#cba6f7;">Bus Pass Calculator</h2>
+            <p style="font-size:0.875rem;color:#a6adc8;margin-top:-0.5rem;">
+                JavaScript port of the C++ GLA3 program &mdash; same pricing logic, runs in your browser.
+            </p>
+
+            <!-- Step: age -->
+            <div id="bus-step-age">
+                <label for="bus-age" style="display:block;margin-bottom:0.4rem;">Please enter your age:</label>
+                <input id="bus-age" type="number" min="0" max="123"
+                       style="width:80px;padding:0.4rem;border-radius:6px;border:1px solid #6c7086;
+                              background:#313244;color:#cdd6f4;font-size:1rem;">
+                <button class="portfolio-btn" style="margin-left:0.75rem;" onclick="busNextAge()">Next</button>
+                <p id="bus-err-age" style="color:#f38ba8;margin:0.4rem 0 0;min-height:1.2em;"></p>
+            </div>
+
+            <!-- Step: city employee -->
+            <div id="bus-step-emp" style="display:none;">
+                <p style="margin-bottom:0.75rem;">Are you a city employee?</p>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="portfolio-btn" onclick="busAnswerEmp(true)">Yes</button>
+                    <button class="portfolio-btn" onclick="busAnswerEmp(false)">No</button>
+                </div>
+            </div>
+
+            <!-- Step: income < $15k -->
+            <div id="bus-step-15k" style="display:none;">
+                <p style="margin-bottom:0.75rem;">Do you earn less than $15,000 per year?</p>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="portfolio-btn" onclick="busAnswer15k(true)">Yes</button>
+                    <button class="portfolio-btn" onclick="busAnswer15k(false)">No</button>
+                </div>
+            </div>
+
+            <!-- Step: income < $30k (seniors only) -->
+            <div id="bus-step-30k" style="display:none;">
+                <p style="margin-bottom:0.75rem;">Do you earn less than $30,000 per year?</p>
+                <div style="display:flex;gap:0.75rem;">
+                    <button class="portfolio-btn" onclick="busAnswer30k(true)">Yes</button>
+                    <button class="portfolio-btn" onclick="busAnswer30k(false)">No</button>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div id="bus-result" style="display:none;">
+                <hr style="border-color:#45475a;margin:1rem 0;">
+                <p id="bus-category" style="color:#a6adc8;font-size:0.875rem;margin-bottom:0.25rem;"></p>
+                <p style="margin:0;font-size:1.1rem;">Your bus pass price is:
+                    <span id="bus-price" style="color:#a6e3a1;font-size:1.5rem;font-weight:bold;"></span>
+                </p>
+                <button class="portfolio-btn" style="margin-top:1.25rem;" onclick="busReset()">Calculate Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    /* ===== Bus Pass Calculator — Interactive JS Port (GLA3) ===== */
+
+    let busAge = 0;
+    let busIsEmployee = false;
+    let busIncomeLow = false;
+
+    function openBusTool() {
+        busReset();
+        document.getElementById('bus-overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        document.getElementById('bus-age').focus();
+    }
+
+    function closeBusTool() {
+        document.getElementById('bus-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('bus-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeBusTool();
+    });
+
+    document.getElementById('bus-age').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') busNextAge();
+    });
+
+    function busShow(id) {
+        ['bus-step-age','bus-step-emp','bus-step-15k','bus-step-30k','bus-result']
+            .forEach(s => document.getElementById(s).style.display = s === id ? 'block' : 'none');
+    }
+
+    function busNextAge() {
+        const val = parseInt(document.getElementById('bus-age').value, 10);
+        const err = document.getElementById('bus-err-age');
+        if (isNaN(val) || val < 0 || val > 123) {
+            err.textContent = 'Please enter a valid age (0–123).';
+            return;
+        }
+        err.textContent = '';
+        busAge = val;
+
+        // Child — free, no more questions
+        if (busAge <= 5) {
+            busShowResult('Child (age 0–5)', '$0 / month');
+            return;
+        }
+        // Youth — only need city employee question
+        if (busAge < 18) {
+            busShow('bus-step-emp');
+            return;
+        }
+        // Adult or Senior — ask income < $15k first
+        busShow('bus-step-15k');
+    }
+
+    function busAnswerEmp(isEmp) {
+        busIsEmployee = isEmp;
+        // Only youth reaches this step
+        busShowResult(
+            'Youth (age 6–17)',
+            isEmp ? '$50 / month' : '$80 / month'
+        );
+    }
+
+    function busAnswer15k(isLow) {
+        busIncomeLow = isLow;
+        if (isLow) {
+            const cat = busAge < 65 ? 'Adult (age 18–64)' : 'Senior (age 65+)';
+            busShowResult(cat, '$30 / month');
+            return;
+        }
+        // Not low income — ask city employee
+        busShow('bus-step-emp');
+        // Swap emp handler based on age group
+        document.getElementById('bus-step-emp').dataset.flow = busAge < 65 ? 'adult' : 'senior';
+    }
+
+    // Override busAnswerEmp to handle adult/senior flow after 15k question
+    const _origAnswerEmp = busAnswerEmp;
+    busAnswerEmp = function(isEmp) {
+        const flow = document.getElementById('bus-step-emp').dataset.flow;
+        if (!flow) { _origAnswerEmp(isEmp); return; }
+
+        busIsEmployee = isEmp;
+        if (isEmp) {
+            const cat = flow === 'senior' ? 'Senior (age 65+)' : 'Adult (age 18–64)';
+            busShowResult(cat, '$50 / month');
+            return;
+        }
+        // Not employee — adult goes straight to $100, senior asks $30k
+        if (flow === 'adult') {
+            busShowResult('Adult (age 18–64)', '$100 / month');
+        } else {
+            busShow('bus-step-30k');
+        }
+    };
+
+    function busAnswer30k(isLow) {
+        busShowResult('Senior (age 65+)', isLow ? '$70 / month' : '$100 / month');
+    }
+
+    function busShowResult(category, priceStr) {
+        document.getElementById('bus-category').textContent = 'Category: ' + category;
+        document.getElementById('bus-price').textContent = priceStr;
+        busShow('bus-result');
+    }
+
+    function busReset() {
+        busAge = 0; busIsEmployee = false; busIncomeLow = false;
+        document.getElementById('bus-age').value = '';
+        document.getElementById('bus-err-age').textContent = '';
+        document.getElementById('bus-step-emp').dataset.flow = '';
+        busShow('bus-step-age');
+    }
+    </script>
+
+    <!-- ===== Days of the Week Tool Modal ===== -->
+    <div id="days-overlay" role="dialog" aria-modal="true" aria-labelledby="days-title"
+         style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1000;overflow-y:auto;">
+        <div style="background:#1e1e2e;color:#cdd6f4;border:1px solid #6c7086;border-radius:12px;
+                    max-width:560px;width:90%;margin:3rem auto;padding:2rem;position:relative;">
+            <button onclick="closeDaysTool()" aria-label="Close"
+                    style="position:absolute;top:0.75rem;right:1rem;background:none;border:none;
+                           color:#cdd6f4;font-size:1.5rem;cursor:pointer;line-height:1;">&times;</button>
+            <h2 id="days-title" style="margin-top:0;color:#cba6f7;">Days of the Week</h2>
+            <p style="font-size:0.875rem;color:#a6adc8;margin-top:-0.5rem;">
+                JavaScript port of the C++ GLA4 program &mdash; select a day to learn where its name comes from.
+            </p>
+
+            <!-- Day picker -->
+            <div id="days-picker" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:0.6rem;margin-bottom:1rem;">
+                <button class="portfolio-btn" onclick="showDay(0)">1 — Sunday</button>
+                <button class="portfolio-btn" onclick="showDay(1)">2 — Monday</button>
+                <button class="portfolio-btn" onclick="showDay(2)">3 — Tuesday</button>
+                <button class="portfolio-btn" onclick="showDay(3)">4 — Wednesday</button>
+                <button class="portfolio-btn" onclick="showDay(4)">5 — Thursday</button>
+                <button class="portfolio-btn" onclick="showDay(5)">6 — Friday</button>
+                <button class="portfolio-btn" onclick="showDay(6)">7 — Saturday</button>
+            </div>
+
+            <!-- Result panel -->
+            <div id="days-result" style="display:none;">
+                <hr style="border-color:#45475a;margin:0.5rem 0 1rem;">
+                <h3 id="days-result-title" style="color:#a6e3a1;margin-top:0;"></h3>
+                <p id="days-result-body" style="line-height:1.7;"></p>
+                <p id="days-result-ref" style="font-size:0.8rem;color:#6c7086;border-left:3px solid #45475a;
+                                               padding-left:0.75rem;margin-top:0.5rem;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    /* ===== Days of the Week — Interactive JS Port (GLA4) ===== */
+
+    const daysData = [
+        {
+            name: 'Sunday',
+            body: 'Sunday derives its name from <em>Sunnandaeg</em> (Sun Day), an Old English translation of the Latin <em>dies Solis</em>, meaning "Day of the Sun".',
+            ref: 'Dictionary.com. (n.d.). Where did the name "Sunday" come from? Retrieved March 7, 2026, from https://www.dictionary.com/articles/where-did-name-sunday-come-from'
+        },
+        {
+            name: 'Monday',
+            body: 'Monday derives its name from <em>Monandaeg</em> (Moon Day), an Old English translation of the Latin <em>dies Lunae</em>, meaning "Day of the Moon".',
+            ref: 'Merriam-Webster. (n.d.). Etymologies for every day of the week. Retrieved March 7, 2026, from https://www.merriam-webster.com/wordplay/etymologies-for-every-day-of-the-week'
+        },
+        {
+            name: 'Tuesday',
+            body: 'Tuesday derives its name from <em>Tiwesdaeg</em> (Tiw\'s Day), an Old English translation of the Latin <em>dies Martis</em>, meaning "Day of Mars". Tiw is the Norse equivalent of Mars, the God of War.',
+            ref: 'Online Etymology Dictionary. (n.d.). Tuesday. Retrieved March 7, 2026, from https://www.etymonline.com/word/Tuesday'
+        },
+        {
+            name: 'Wednesday',
+            body: 'Wednesday derives its name from <em>Wodnesdaeg</em> (Woden\'s Day), an Old English translation of the Latin <em>dies Mercurii</em>, meaning "Day of Mercury". Woden is the Norse equivalent of the Roman god Mercury, both associated with eloquence.',
+            ref: 'Online Etymology Dictionary. (n.d.). Wednesday. Retrieved March 7, 2026, from https://www.etymonline.com/word/Wednesday'
+        },
+        {
+            name: 'Thursday',
+            body: 'Thursday derives its name from <em>Thunresdaeg</em>, meaning "Day of Thunder" in Old English — equivalent to the Latin <em>dies Iovis</em> ("Day of Jove", i.e. Jupiter). Both deities are associated with thunder.',
+            ref: 'Clunies Ross, M. (2018, January 2). Why Wednesday? The days of the week have a convoluted, religious heritage. The Guardian. Retrieved March 7, 2026, from https://www.theguardian.com/world/2018/jan/02/why-wednesday-the-days-of-the-week-have-a-convoluted-religious-heritage'
+        },
+        {
+            name: 'Friday',
+            body: 'Friday derives its name from <em>Frigedaeg</em> (Frigga\'s Day), an Old English translation of the Latin <em>dies Veneris</em>, meaning "Day of Venus". Frigga is the Norse equivalent of the Roman goddess Venus; both are associated with love.',
+            ref: 'Merriam-Webster. (n.d.). Etymologies for every day of the week. Retrieved March 7, 2026, from https://www.merriam-webster.com/wordplay/etymologies-for-every-day-of-the-week'
+        },
+        {
+            name: 'Saturday',
+            body: 'Saturday derives its name from <em>Saeturnesdaeg</em> (Day of Saturn), an Old English translation of the Latin <em>dies Saturni</em>. Saturn is the Roman god of Time — the only day named after a Roman god rather than a Norse one.',
+            ref: 'Clunies Ross, M. (2018, January 2). Why Wednesday? The days of the week have a convoluted, religious heritage. The Guardian. Retrieved March 7, 2026, from https://www.theguardian.com/world/2018/jan/02/why-wednesday-the-days-of-the-week-have-a-convoluted-religious-heritage'
+        }
+    ];
+
+    function openDaysTool() {
+        document.getElementById('days-result').style.display = 'none';
+        document.getElementById('days-overlay').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeDaysTool() {
+        document.getElementById('days-overlay').style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    document.getElementById('days-overlay').addEventListener('click', function(e) {
+        if (e.target === this) closeDaysTool();
+    });
+
+    function showDay(index) {
+        const day = daysData[index];
+        document.getElementById('days-result-title').textContent = 'Your selected day is ' + day.name + '.';
+        document.getElementById('days-result-body').innerHTML = day.body;
+        document.getElementById('days-result-ref').textContent = day.ref;
+        document.getElementById('days-result').style.display = 'block';
+        document.getElementById('days-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    </script>
 </body>
 </html>
