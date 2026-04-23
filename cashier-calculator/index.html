@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashier Calculator - Assignment 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Toast notification container -->
+    <div id="toast-container"></div>
+
+    <!-- Main container with three columns: Admin, Checkout, Receipt -->
+    <div class="container">
+
+        <!-- ==================== ADMIN SECTION ==================== -->
+        <div class="section" id="admin-section">
+            <h2 class="section-title">Admin</h2>
+
+            <!-- Add a new product -->
+            <div class="sub-section">
+                <h3>Add A New Product</h3>
+                <div class="input-row">
+                    <input type="text" id="product-name-input" placeholder="Product Name" maxlength="50">
+                    <button onclick="addProduct()">Add Product</button>
+                </div>
+            </div>
+
+            <!-- Set price for an existing product -->
+            <div class="sub-section">
+                <h3>Select A Product Then Set The Price Per Unit</h3>
+                <div class="input-row">
+                    <select id="admin-product-select"></select>
+                    <input type="number" id="price-input" placeholder="Price" min="0" max="10000000" step="0.01">
+                    <button onclick="setPrice()">Set Price</button>
+                </div>
+            </div>
+
+            <!-- Live product list so admin can see what's been added -->
+            <div class="sub-section">
+                <h3>Current Products</h3>
+                <div id="product-list" class="info-box">
+                    <p class="placeholder-text">No Products Added Yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== CHECKOUT SECTION ==================== -->
+        <div class="section" id="checkout-section">
+            <h2 class="section-title">Checkout</h2>
+
+            <!-- New Transaction button -->
+            <div class="sub-section center">
+                <button class="btn-primary" onclick="newTransaction()">New Transaction</button>
+            </div>
+
+            <!-- Product selection row -->
+            <div class="sub-section product-picker">
+                <h3>1. Pick A Product</h3>
+                <select id="checkout-product-select" class="full-width"></select>
+            </div>
+
+            <!-- Number pad for selecting units -->
+            <div class="sub-section">
+                <h3>2. Pick Quantity (1-9)</h3>
+                <div class="numpad-row">
+                    <div class="numpad">
+                        <button class="num-btn" onclick="selectUnit(1)">1</button>
+                        <button class="num-btn" onclick="selectUnit(2)">2</button>
+                        <button class="num-btn" onclick="selectUnit(3)">3</button>
+                        <button class="num-btn" onclick="selectUnit(4)">4</button>
+                        <button class="num-btn" onclick="selectUnit(5)">5</button>
+                        <button class="num-btn" onclick="selectUnit(6)">6</button>
+                        <button class="num-btn" onclick="selectUnit(7)">7</button>
+                        <button class="num-btn" onclick="selectUnit(8)">8</button>
+                        <button class="num-btn" onclick="selectUnit(9)">9</button>
+                        <button class="num-btn btn-undo" onclick="removeLastFromCart()" title="Remove last item">&#8617;<span class="btn-label">Undo</span></button>
+                        <button class="num-btn btn-clear" onclick="clearUnit()">C<span class="btn-label">Clear</span></button>
+                        <button class="num-btn btn-clear-cart" onclick="clearCart()" title="Clear entire cart">&#128465;<span class="btn-label">Reset</span></button>
+                    </div>
+                    <!-- Action buttons beside the numpad -->
+                    <div class="action-buttons">
+                        <div class="unit-display">
+                            <label for="unit-input">Units:</label>
+                            <input type="text" id="unit-input" readonly>
+                        </div>
+                        <button class="btn-accent" onclick="addToCart()">Add to Cart</button>
+                        <button class="btn-pay" onclick="pay()">Pay</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== RECEIPT SECTION ==================== -->
+        <div class="section" id="receipt-section">
+            <h2 class="section-title">Receipt</h2>
+            <div id="receipt-content">
+                <!-- Receipt will be generated here by JavaScript -->
+            </div>
+            <div class="email-btn-wrapper">
+                <input type="email" id="email-input" placeholder="Customer Email">
+                <button class="btn-email" onclick="emailReceipt()">&#9993; Email Receipt</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

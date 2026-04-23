@@ -1,0 +1,175 @@
+<!--
+    Author: Jordan Champagne
+    Student ID: 484889
+    Course: TECH1101 Web and Internet Fundamentals
+    Instructor: Michael Dorsey
+    Assignment: 1 - Eddie The Eagle Biography Website
+    Declaration: This website and its code are my own work, except where otherwise cited. No part has been copied from other students or unauthorized sources.
+    Note: GitHub Copilot and Microsoft Copilot were used to assist with formatting, style suggestions, comment formatting and editing, and feedback during development.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ski Jumping Career Record - Eddie The Eagle</title>
+</head>
+
+<body>
+    <!-- Header is consistent across all pages except for the quote and page count. -->
+    <header style="display: flex; align-items: center; justify-content: space-between;">
+        <!-- References section: All sources used for factual content, quotes, and data throughout the site are listed below. -->
+        <!-- Contact form: This section is provided for user feedback and inquiries. It is intended for use when the site is published live. -->
+        <div style="flex: 1; text-align:left; font-size: 4em;">🦅</div>
+        <div style="flex: 2; text-align:center; font-size: 1em; font-weight: bold;">
+            <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 0.1em;">Eddie The Eagle Biography</div>
+            <span style="font-style: italic; font-weight: bold;">"I could not see during 30% of my jumps" - Eddie the
+                Eagle</span>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <img src="images/Flag_of_the_United_Kingdom.svg" alt="UK Flag" style="height: 3em;">
+        </div>
+    </header>
+    <br>
+    <h1 style="text-align: center;"><strong>Ski Jumping Career Record</strong></h1>
+    <br>
+    <main style="max-width: 70vw; margin: 2em auto; text-align: left; font-size: 1.2em;">
+        <h2>International Competition Results</h2>
+        <!--
+            The following summary of Eddie's post-Olympic career is based in part on information from a BBC article:
+            https://www.olympics.com/en/news/olympic-cinderellas-how-a-british-plasterer-became-ski-jumping-legend-eddie-the-
+            Eddie's participation at Calgary inspired the creation of new, stricter qualification rules for Olympic ski jumping and other events (sometimes called the "Eddie the Eagle Rule").
+            See References for full citation.
+        -->
+        <p>Eddie the Eagle continued to train and compete after the 1988 Calgary Olympics. He attempted to qualify for
+            the 1992 Olympics in Albertville, France. He also tried for the 1994 Olympics in Lillehammer, Norway, but
+            was unsuccessful. Although Eddie was able to improve his jumping distances, he fell short of the new <a
+                href="https://www.olympics.com/en/news/olympic-cinderellas-how-a-british-plasterer-became-ski-jumping-legend-eddie-the-"
+                target="_blank">standards</a> that were implemented after Calgary. <br><small>(See the linked
+                article, last paragraph describes the changes.)</small></p>
+        <!--
+            Table adapted from the official FIS Ski Jumping Results website:
+            https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=JP&competitorid=15142&type=result
+            Data reformatted and summarized for this assignment. See References for full citation.
+        -->
+        <table border="1" cellpadding="8"
+            style="border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 1em;">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Event</th>
+                    <th>Discipline</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>30-12-1986</td>
+                    <td>West Germany</td>
+                    <td>Oberstdorf</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K115</td>
+                    <td>110th</td>
+                </tr>
+                <tr>
+                    <td>11-02-1987</td>
+                    <td>West Germany</td>
+                    <td>Oberstdorf</td>
+                    <td>World Championships</td>
+                    <td>Normal Hill K70</td>
+                    <td>67th</td>
+                </tr>
+                <tr>
+                    <td>30-12-1987</td>
+                    <td>West Germany</td>
+                    <td>Oberstdorf</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K120</td>
+                    <td>112th</td>
+                </tr>
+                <tr>
+                    <td>01-01-1988</td>
+                    <td>West Germany</td>
+                    <td>Garmisch-Partenkirchen</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K115</td>
+                    <td>110th</td>
+                </tr>
+                <tr>
+                    <td>03-01-1988</td>
+                    <td>Austria</td>
+                    <td>Innsbruck</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K120</td>
+                    <td>120th</td>
+                </tr>
+                <tr>
+                    <td>06-01-1988</td>
+                    <td>Austria</td>
+                    <td>Bischofshofen</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K120</td>
+                    <td>120th</td>
+                </tr>
+                <tr>
+                    <td>14-02-1988</td>
+                    <td>Canada</td>
+                    <td>Calgary</td>
+                    <td>Olympic Winter Games</td>
+                    <td>Normal Hill K70</td>
+                    <td>58th</td>
+                </tr>
+                <tr>
+                    <td>15-02-1988</td>
+                    <td>Canada</td>
+                    <td>Calgary</td>
+                    <td>Olympic Winter Games</td>
+                    <td>Large Hill K90</td>
+                    <td>55th</td>
+                </tr>
+                <tr>
+                    <td>30-12-1988</td>
+                    <td>West Germany</td>
+                    <td>Oberstdorf</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K115</td>
+                    <td>95th</td>
+                </tr>
+                <tr>
+                    <td>01-01-1989</td>
+                    <td>West Germany</td>
+                    <td>Garmisch-Partenkirchen</td>
+                    <td>World Cup</td>
+                    <td>Large Hill K115</td>
+                    <td>94th</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!--
+            The following link directs to the official FIS Ski Jumping Results website, which is the source for the table above.
+            Users can view the complete competition record and additional details there.
+        -->
+        <p>For a full list of results, visit the <a
+                href="https://www.fis-ski.com/DB/general/athlete-biography.html?sectorcode=JP&competitorid=15142&type=result&utm_source=copilot.com"
+                target="_blank">FIS Ski Jumping Results</a> page.</p>
+    </main>
+    <!-- Footer is consistent across all pages except for the page count. It also contains navigation links to other pages. -->
+    <!-- Footer is consistent across all pages except for the page count. -->
+    <footer
+        style="margin-top: 2em; padding: 1em 0; display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 2em; margin-left: 2vw;" aria-hidden="true">⛷️</span>
+        <nav style="flex: 1; text-align: center; font-size: 1.3em;">
+            <a href="index.html" style="margin: 0 1em;">Early Life</a>
+            <a href="calgary_olympics_1988.html" style="margin: 0 1em;">Calgary Olympics 1988</a>
+            <a href="ski_jumping_career_record.html" style="margin: 0 1em;">Ski Jumping Career Record</a>
+            <a href="after_ski_jumping_and_film.html" style="margin: 0 1em;">After Ski Jumping & Film</a>
+            <a href="references_and_contact.html" style="margin: 0 1em;">References & Contact</a>
+        </nav>
+        <span style="font-size: 1.1em; margin-right: 2vw;">3 of 5</span>
+    </footer>
+</body>
+
+</html>

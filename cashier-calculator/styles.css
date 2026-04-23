@@ -1,0 +1,519 @@
+/* ===== General Page Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Toast Notifications ===== */
+#toast-container {
+    position: fixed;
+    top: 1.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.toast {
+    padding: 0.8em 2em;
+    border-radius: 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(-1em);
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 90vw;
+    text-align: center;
+}
+
+.toast-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast-error {
+    background-color: #dc2626;
+}
+
+.toast-success {
+    background-color: #16a34a;
+}
+
+.toast-info {
+    background-color: #2563eb;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: #eef1f5;
+    padding: 1.5vw;
+    color: #333;
+    font-size: clamp(14px, 1vw, 18px);
+}
+
+/* ===== Three-Column Layout ===== */
+.container {
+    display: flex;
+    gap: 1.2vw;
+    max-width: 96vw;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Each section (Admin, Checkout, Receipt) */
+.section {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #d0d4da;
+    border-radius: 0.5em;
+    padding: 1.5vw;
+    min-height: 85vh;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Section titles */
+.section-title {
+    text-align: center;
+    color: #0d9488;
+    font-size: 1.9em;
+    margin-bottom: 1.5vh;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 1vh;
+}
+
+/* ===== Sub-Sections ===== */
+.sub-section {
+    margin-bottom: 1.5vh;
+}
+
+.sub-section h3 {
+    font-size: 1.15em;
+    margin-bottom: 0.8vh;
+    color: #555;
+    font-weight: bold;
+}
+
+.sub-section.center {
+    text-align: center;
+}
+
+.sub-section.product-picker {
+    margin-bottom: 15vh;
+}
+
+/* ===== Input Rows ===== */
+.input-row {
+    display: flex;
+    gap: 0.5vw;
+    align-items: center;
+}
+
+.input-row input[type="text"],
+#price-input {
+    padding: 0.6em 0.8em;
+    border: 1px solid #bbb;
+    border-radius: 0.3em;
+    font-size: 1em;
+    width: 10vw;
+    min-width: 100px;
+}
+
+.input-row select,
+.full-width {
+    padding: 0.6em 0.8em;
+    border: 1px solid #bbb;
+    border-radius: 0.3em;
+    font-size: 1em;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* ===== Buttons ===== */
+button {
+    padding: 0.6em 1.2em;
+    border: 1px solid #aaa;
+    border-radius: 0.3em;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.15s;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Primary action button (New Transaction) */
+.btn-primary {
+    background-color: #0d9488;
+    color: #fff;
+    border-color: #0b7f74;
+    padding: 0.8em 1.8em;
+    font-size: 1.1em;
+}
+
+.btn-primary:hover {
+    background-color: #0b7f74;
+}
+
+/* Accent button (Add to Cart) */
+.btn-accent {
+    background-color: #3b82f6;
+    color: #fff;
+    border-color: #2563eb;
+    padding: 0.8em 1.8em;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.btn-accent:hover {
+    background-color: #2563eb;
+}
+
+/* Pay button */
+.btn-pay {
+    background-color: #0d9488;
+    color: #fff;
+    border-color: #0b7f74;
+    padding: 0.9em 2.8em;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.btn-pay:hover {
+    background-color: #0b7f74;
+}
+
+/* ===== Number Pad ===== */
+.numpad-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1vw;
+}
+
+/* Add to Cart + Pay buttons beside the numpad */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0.8em;
+    margin-left: auto;
+    align-self: flex-start;
+    margin-top: calc(-1.1em * 1.2 - 4px);
+}
+
+.numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 3.5vw);
+    gap: 0.4vw;
+}
+
+.num-btn {
+    width: 3.5vw;
+    height: 3.5vw;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0.3em;
+    background-color: #f7f7f7;
+    border: 1px solid #bbb;
+}
+
+.num-btn:hover {
+    background-color: #ddd;
+}
+
+/* Undo button (remove last cart item) */
+.btn-undo {
+    background-color: #e2e8f0;
+    color: #475569;
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-undo:hover {
+    background-color: #cbd5e1;
+}
+
+/* Clear cart button (trash icon) */
+.btn-clear-cart {
+    background-color: #e2e8f0;
+    color: #475569;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-clear-cart:hover {
+    background-color: #cbd5e1;
+}
+
+/* Clear unit button */
+.btn-clear {
+    background-color: #e2e8f0;
+    color: #475569;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-clear:hover {
+    background-color: #cbd5e1;
+}
+
+/* Small label text under numpad icons */
+.btn-label {
+    display: block;
+    font-size: 0.6em;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    margin-top: 0.1em;
+}
+
+/* Unit display beside numpad */
+.unit-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.unit-display label {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #555;
+}
+
+.unit-display input {
+    width: 3.5vw;
+    height: 3.5vw;
+    min-width: 40px;
+    min-height: 40px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 2px solid #0d9488;
+    border-radius: 0.4em;
+    background-color: #f0fdfa;
+    color: #333;
+}
+
+/* ===== Info Box (product list & cart) ===== */
+.info-box {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 0.3em;
+    padding: 0.6em 0.8em;
+    max-height: 50vh;
+    overflow-y: auto;
+    font-size: 1em;
+}
+
+.info-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-box th,
+.info-box td {
+    padding: 3px 6px;
+    text-align: left;
+    border: 1px solid #d0d4da;
+}
+
+.info-box th {
+    font-weight: bold;
+    color: #444;
+    font-size: 1em;
+}
+
+.info-box .cart-total-row td {
+    font-weight: bold;
+    border-top: 2px solid #ccc;
+    padding-top: 5px;
+}
+
+.placeholder-text {
+    color: #aaa;
+    font-style: italic;
+    text-align: center;
+    padding: 8px 0;
+}
+
+/* ===== Receipt Styles ===== */
+#receipt-content {
+    font-size: 1.05em;
+}
+
+#receipt-content p {
+    margin-bottom: 6px;
+    font-size: 1.1em;
+}
+
+/* Receipt table */
+#receipt-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+
+#receipt-content th,
+#receipt-content td {
+    border: 1px solid #bbb;
+    padding: 0.5em 0.7em;
+    text-align: left;
+    font-size: 1em;
+}
+
+#receipt-content th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Receipt totals */
+.receipt-totals {
+    margin-top: 10px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+/* Totals rows inside the receipt table */
+.totals-row td {
+    border-top: 2px solid #ccc;
+    background-color: #f8fafc;
+}
+
+.grand-total-row td {
+    border-top: 2px solid #0d9488;
+    background-color: #f0fdfa;
+}
+
+/* Running subtotal shown while building the cart */
+.receipt-running-total {
+    margin-top: 6px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Preview row — item not yet confirmed (orange tint) */
+.preview-row td {
+    color: #c2410c;
+    font-style: italic;
+    background-color: #fff7ed;
+}
+
+/* Preview for pending price in Admin product list */
+.preview-price-row td {
+    color: #c2410c;
+    font-style: italic;
+    background-color: #fff7ed;
+}
+
+/* Remove button (×) on cart items */
+.remove-cell {
+    width: 24px;
+    padding: 0 4px !important;
+}
+
+/* Edit button (pencil) on product list */
+.edit-cell {
+    width: 24px;
+    padding: 0 4px !important;
+}
+
+.btn-edit {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.btn-edit:hover {
+    color: #0d9488;
+    background: none;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.btn-delete:hover {
+    color: #dc2626;
+    background: none;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: #94a3b8;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.btn-remove:hover {
+    color: #c2410c;
+    background: none;
+}
+
+/* Email Receipt section - bottom of receipt */
+.email-btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.8em;
+    margin-top: 1.5vh;
+}
+
+#email-input {
+    padding: 0.6em 0.8em;
+    border: 1px solid #bbb;
+    border-radius: 0.3em;
+    font-size: 1em;
+    width: 100%;
+}
+
+.btn-email {
+    background-color: #0d9488;
+    color: #fff;
+    border-color: #0b7f74;
+    padding: 0.6em 1.4em;
+    font-size: 1em;
+    border-radius: 0.3em;
+    cursor: pointer;
+}
+
+.btn-email:hover {
+    background-color: #0b7f74;
+}

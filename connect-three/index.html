@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+  index.html - GLA3 Connect Three Game
+  Author: Jordan Champagne
+
+  This project is part of the course requirements for the
+  Software Development Diploma program at Bow Valley College (BVC).
+
+  Course: TECH1101 - Web and Internet Fundamentals
+  Instructor: Michael Dorsey
+  Assignment: Graded Learning Activity 3 - Connect Three
+  Date: 2026-04-17
+  Version: v1.0
+
+  Authorship Declaration:
+  This work is my own. The structure and approach are based on
+  class exercises and concepts taught in TECH1101 (Winter 2026) at BVC,
+  and adapted by me for this assignment.
+
+  Background Context:
+  I hold a diploma in Mechanical Engineering Technology (MET) (Design & Automation)
+  from the Southern Alberta Institute of Technology (SAIT), which included
+  programming Programmable Logic Controllers (PLCs), RAPID (ABB's proprietary
+  robot programming language), Human-Machine Interface (HMI) systems, and
+  technical problem-solving.
+
+  AI Tools Used:
+  - GitHub Copilot: Assisted with game logic structure, win-checking algorithms,
+    CSS grid layout, drop animation, and comment clarity.
+  - All suggestions were reviewed and modified by me to fit the assignment
+    requirements and my coding style.
+  - All final design decisions and research were done by me.
+-->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Connect Three</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Game header with title and status display -->
+  <header>
+    <h1>Connect Three</h1>
+    <p id="status">Player X's Turn</p>
+  </header>
+
+  <!-- Main game board: 3 columns x 6 rows -->
+  <!-- Each column is clickable; pieces drop to the lowest empty cell -->
+  <div id="board">
+    <!-- Row 0 (top) -->
+    <div class="cell" data-row="0" data-col="0"></div>
+    <div class="cell" data-row="0" data-col="1"></div>
+    <div class="cell" data-row="0" data-col="2"></div>
+    <!-- Row 1 -->
+    <div class="cell" data-row="1" data-col="0"></div>
+    <div class="cell" data-row="1" data-col="1"></div>
+    <div class="cell" data-row="1" data-col="2"></div>
+    <!-- Row 2 -->
+    <div class="cell" data-row="2" data-col="0"></div>
+    <div class="cell" data-row="2" data-col="1"></div>
+    <div class="cell" data-row="2" data-col="2"></div>
+    <!-- Row 3 -->
+    <div class="cell" data-row="3" data-col="0"></div>
+    <div class="cell" data-row="3" data-col="1"></div>
+    <div class="cell" data-row="3" data-col="2"></div>
+    <!-- Row 4 -->
+    <div class="cell" data-row="4" data-col="0"></div>
+    <div class="cell" data-row="4" data-col="1"></div>
+    <div class="cell" data-row="4" data-col="2"></div>
+    <!-- Row 5 (bottom) -->
+    <div class="cell" data-row="5" data-col="0"></div>
+    <div class="cell" data-row="5" data-col="1"></div>
+    <div class="cell" data-row="5" data-col="2"></div>
+  </div>
+
+  <!-- Restart button to reset the game without refreshing -->
+  <button id="restartBtn">Restart</button>
+
+  <!-- External JavaScript for game logic -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!--
+    Author: Jordan Champagne
+    Student ID: 484889
+    Course: TECH1101 Web and Internet Fundamentals
+    Instructor: Michael Dorsey
+    Assignment: 1 - Eddie The Eagle Biography Website
+    Declaration: This website and its code are my own work, except where otherwise cited. No part has been copied from other students or unauthorized sources.
+    Note: GitHub Copilot and Microsoft Copilot were used to assist with formatting, style suggestions, comment formatting and editing, and feedback during development.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eddie The Eagle Biography</title>
+</head>
+
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between;">
+        <!--
+            Header section:
+            - Contains an eagle emoji (Unicode character) on the left, representing Eddie the Eagle
+            - Uses flexbox to align the eagle icon (left), assignment title and quote (center), and UK flag (right)
+            - Assignment title and a relevant quote from Eddie the Eagle are included for context
+        -->
+        <!-- Eagle emoji (Unicode character) visually represents Eddie the Eagle -->
+        <div style="flex: 1; text-align:left; font-size: 4em;">🦅</div>
+        <div style="flex: 2; text-align:center; font-size: 1em; font-weight: bold;">
+            <div style="font-size: 1.2em; font-weight: bold; margin-bottom: 0.1em;">Eddie The Eagle Biography</div>
+            <span style="font-style: italic; font-weight: bold;">"I’d like to say I flew like an eagle, but I was
+                probably closer to the ostrich" - Eddie the Eagle</span>
+        </div>
+        <div style="flex: 1; text-align: right;">
+            <img src="images/Flag_of_the_United_Kingdom.svg" alt="UK Flag" style="height: 3em;">
+        </div>
+    </header>
+
+    <br>
+
+    <h1 style="text-align: center;"><strong>Early Life</strong></h1>
+
+    <br>
+
+    <!--
+        Main content section:
+        - Contains facts about Eddie the Eagle's early life (left column)
+        - Includes a map image linking to Eddie's birthplace (right column)
+        - Uses flexbox for responsive two-column layout
+    -->
+    <main style="display:flex">
+        <div class="left-column" style="flex: 2; margin-right:auto; margin-left: 3vw;">
+            <h2 style="text-align: left;"><strong>From Cheltenham to the Slopes</strong></h2>
+            <div style="text-align: left; font-size: 1.4em;">
+                <p> On December the 5<sup>th</sup> Michael David Edwards (AKA Eddie the Eagle), was born in the town of
+                    Cheltenham, Gloucestershire, U.K.</p>
+                <p> His school friends called him "Eddie", based on his surname Edwards. At the age of 13 his journey to
+                    become "The Eagle" began.</p>
+                <p> This was due to a school ski trip causing him to develop an enthusiasm for the sport, it would last
+                    a lifetime and change his destiny.</p>
+                <p> He honed his skills on the slopes through the Gloucestershire Ski and Snowboard Centre. He competed
+                    in Alpine skiing and ski slalom.</p>
+                <p> His career expanded to include competition abroad. After losing the opportunity to compete in
+                    Sarajevo in 1984, he decided to change focus.</p>
+                <!--
+                    BBC Sports article cited as a source for Eddie’s career change
+                    The link uses target="_blank" to ensure it opens in a new tab, as do all external links on this site
+                -->
+                <p> According to<a href="https://www.bbc.com/sport/articles/c8rm8zp2n0po" target="_blank"> BBC Sports
+                        (2026)</a>, Eddie's switch to ski jumping was also motivated by financial reasons. It was
+                    £3.50/day, skiing £200. </p>
+                <p> </p>
+            </div>
+        </div>
+        <div class="right-column" style="flex: 1; margin-left:auto; margin-right: 3vw;">
+            <a href="https://osm.org/go/eulyn2V-" target="_blank" title="View Eddie's Birth Place on OpenStreetMap"><img
+                    src="images/Map_Of_Eddie's_Birth_Place.svg" alt="Map of Eddie's Birth Place"
+                    style="width: 33vw; height: auto;"></a>
+            <!-- Clicking the map opens OpenStreetMap in a new tab for zooming and exploring -->
+        </div>
+    </main>
+
+    <footer
+        style="margin-top: 2em; padding: 1em 0; display: flex; align-items: center; justify-content: space-between;">
+        <!--
+        Footer section:
+        - Contains a ski emoji (Unicode character) for visual interest
+        - Navigation bar for all main site pages
+        - Page counter indicating current page out of total
+    -->
+        <span style="font-size: 2em; margin-left: 2vw;">⛷️</span>
+        <nav style="flex: 1; text-align: center; font-size: 1.3em;">
+            <a href="index.html" style="margin: 0 1em;">Early Life</a>
+            <a href="calgary_olympics_1988.html" style="margin: 0 1em;">Calgary Olympics 1988</a>
+            <a href="ski_jumping_career_record.html" style="margin: 0 1em;">Ski Jumping Career Record</a>
+            <a href="after_ski_jumping_and_film.html" style="margin: 0 1em;">After Ski Jumping & Film</a>
+            <a href="references_and_contact.html" style="margin: 0 1em;">References & Contact</a>
+        </nav>
+        <span style="font-size: 1.1em;  margin-right: 2vw;">1 of 5</span>
+    </footer>
+
+</body>
+
+</html>
