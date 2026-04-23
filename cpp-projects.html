@@ -285,6 +285,20 @@
     </footer>
     <script src="js/main.js"></script>
 
+    <style>
+    /* ── Days of the Week calendar strip — responsive ── */
+    #days-picker button .day-abbrev { color: #e67e22; }
+    #days-picker button.day-selected { background: #e67e22 !important; color: #ffffff !important; }
+    #days-picker button.day-selected .day-abbrev { color: #ffffff; }
+
+    /* Tighten cells on narrow viewports */
+    @media (max-width: 480px) {
+        #days-picker button { padding: 0.5rem 0.1rem; }
+        #days-picker button .day-abbrev { font-size: 0.55rem; }
+        #days-picker button .day-num   { font-size: 0.9rem; }
+    }
+    </style>
+
     <!-- ===== Bus Pass Calculator Modal ===== -->
     <div id="bus-overlay" role="dialog" aria-modal="true" aria-labelledby="bus-title"
          style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:1000;overflow-y:auto;">
@@ -479,47 +493,40 @@
 
             <!-- Day picker — calendar strip -->
             <div id="days-picker" style="display:grid;grid-template-columns:repeat(7,1fr);border:2px solid #e67e22;border-radius:8px;overflow:hidden;margin-bottom:1.5rem;">
-                <button onclick="selectDay(this,0)" data-day="0"
-                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Sun</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">1</div>
+                <button onclick="selectDay(this,0)"
+                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Sun</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">1</div>
                 </button>
-                <button onclick="selectDay(this,1)" data-day="1"
-                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Mon</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">2</div>
+                <button onclick="selectDay(this,1)"
+                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Mon</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">2</div>
                 </button>
-                <button onclick="selectDay(this,2)" data-day="2"
-                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Tue</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">3</div>
+                <button onclick="selectDay(this,2)"
+                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Tue</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">3</div>
                 </button>
-                <button onclick="selectDay(this,3)" data-day="3"
-                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Wed</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">4</div>
+                <button onclick="selectDay(this,3)"
+                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Wed</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">4</div>
                 </button>
-                <button onclick="selectDay(this,4)" data-day="4"
-                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Thu</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">5</div>
+                <button onclick="selectDay(this,4)"
+                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Thu</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">5</div>
                 </button>
-                <button onclick="selectDay(this,5)" data-day="5"
-                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Fri</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">6</div>
+                <button onclick="selectDay(this,5)"
+                        style="background:#1a252f;color:#cccccc;border:none;border-right:1px solid #e67e22;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Fri</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">6</div>
                 </button>
-                <button onclick="selectDay(this,6)" data-day="6"
-                        style="background:#1a252f;color:#cccccc;border:none;
-                               padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
-                    <div style="font-size:0.65rem;color:#e67e22;text-transform:uppercase;letter-spacing:0.05em;">Sat</div>
-                    <div style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">7</div>
+                <button onclick="selectDay(this,6)"
+                        style="background:#1a252f;color:#cccccc;border:none;padding:0.6rem 0.2rem;cursor:pointer;text-align:center;transition:background 0.15s;">
+                    <div class="day-abbrev" style="font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;">Sat</div>
+                    <div class="day-num" style="font-size:1.1rem;font-weight:bold;margin-top:0.2rem;">7</div>
                 </button>
             </div>
 
@@ -591,13 +598,12 @@
     });
 
     function selectDay(btn, index) {
-        // Highlight selected cell
         document.querySelectorAll('#days-picker button').forEach(b => {
+            b.classList.remove('day-selected');
             b.style.background = '#1a252f';
             b.style.color = '#cccccc';
         });
-        btn.style.background = '#e67e22';
-        btn.style.color = '#ffffff';
+        btn.classList.add('day-selected');
         showDay(index);
     }
 
