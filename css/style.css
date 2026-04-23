@@ -763,6 +763,7 @@ footer {
     border-radius: 8px;
     padding: 1.25rem 1.5rem;
     margin-bottom: 1.5rem;
+    scroll-margin-top: 4.5rem; /* offset for sticky nav (3.75rem) + small gap */
 }
 
 .cheat-entry h2 {

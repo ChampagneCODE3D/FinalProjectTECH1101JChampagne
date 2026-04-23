@@ -517,3 +517,87 @@ button:hover {
 .btn-email:hover {
     background-color: #0b7f74;
 }
+
+/* ===== Mobile Responsive Layout ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 0.5em;
+        font-size: clamp(13px, 3.5vw, 16px);
+    }
+
+    /* Stack the three columns vertically */
+    .container {
+        flex-direction: column;
+        max-width: 100%;
+        gap: 1em;
+    }
+
+    .section {
+        min-height: unset;
+        padding: 1em;
+    }
+
+    /* Numpad: make buttons fill available space */
+    .numpad {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.4em;
+        width: 100%;
+    }
+
+    .num-btn {
+        width: 100%;
+        height: clamp(44px, 12vw, 60px);
+        min-width: unset;
+        min-height: 44px;
+        font-size: 1.1em;
+    }
+
+    .unit-display input {
+        width: clamp(44px, 12vw, 60px);
+        height: clamp(44px, 12vw, 60px);
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .numpad-row {
+        gap: 0.6em;
+    }
+
+    /* Input row: wrap on very narrow screens */
+    .input-row {
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
+
+    .input-row input[type="text"],
+    #price-input {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .input-row select {
+        width: 100%;
+    }
+
+    /* Action buttons (Add to Cart / Pay) go full width */
+    .action-buttons {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .btn-accent,
+    .btn-pay {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Info box: limit height so page doesn't become very tall */
+    .info-box {
+        max-height: 35vh;
+    }
+
+    /* Product picker margin reduced */
+    .sub-section.product-picker {
+        margin-bottom: 2em;
+    }
+}

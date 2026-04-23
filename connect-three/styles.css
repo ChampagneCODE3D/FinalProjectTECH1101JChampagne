@@ -158,3 +158,38 @@ h1 {
 #restartBtn:hover {
   background-color: #1a252f;
 }
+
+/* ===== Mobile Responsive Layout ===== */
+@media (max-width: 480px) {
+  /* Scale cell size so the full board fits on small phones */
+  :root {
+    --cell: min(26vw, 100px);
+  }
+
+  #board {
+    grid-template-columns: repeat(3, var(--cell));
+    grid-template-rows: repeat(6, var(--cell));
+    padding: 6px;
+    gap: 3px;
+  }
+
+  .cell {
+    width: var(--cell);
+    height: var(--cell);
+    /* Larger X/O so they're easy to read */
+    font-size: clamp(1.5rem, 8vw, 3rem);
+  }
+
+  h1 {
+    font-size: clamp(1.4rem, 7vw, 2.5rem);
+  }
+
+  #status {
+    font-size: clamp(0.95rem, 4.5vw, 1.3rem);
+  }
+
+  #restartBtn {
+    padding: 10px 24px;
+    font-size: 1rem;
+  }
+}
