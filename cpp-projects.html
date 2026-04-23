@@ -175,7 +175,7 @@
             inp.id = 'sv-' + i;
             inp.placeholder = '#' + i;
             inp.style.cssText = 'padding:0.5rem;border-radius:6px;border:1px solid #e67e22;' +
-                                'background:#1a252f;color:#ffffff;font-size:0.95rem;width:100%;';
+                                'background:#1a252f;color:#ffffff;font-size:0.95rem;width:100%;box-sizing:border-box;';
             inp.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
                     const next = document.getElementById('sv-' + (i + 1));
@@ -583,6 +583,12 @@
     ];
 
     function openDaysTool() {
+        // Reset selected cell highlight and hide result
+        document.querySelectorAll('#days-picker button').forEach(b => {
+            b.classList.remove('day-selected');
+            b.style.background = '#1a252f';
+            b.style.color = '#cccccc';
+        });
         document.getElementById('days-result').style.display = 'none';
         document.getElementById('days-overlay').style.display = 'block';
         document.body.style.overflow = 'hidden';
