@@ -164,6 +164,31 @@ function evaluateTrapTemperature(tempC) {
 })();
 
 /* ---------- Project Popup Window Links ---------- */
+(function exposeProjectPopupHelper() {
+    window.openProjectPopup = function openProjectPopup(href) {
+        if (!href) return false;
+
+        const width = Math.min(window.screen.availWidth - 120, 1200);
+        const height = Math.min(window.screen.availHeight - 120, 800);
+        const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
+        const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
+        const features =
+            `popup=yes,width=${width},height=${height},left=${left},top=${top},` +
+            'resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes,status=yes';
+
+        const popup = window.open(href, 'projectPreviewWindow', features);
+
+        if (popup) {
+            popup.focus();
+            return false;
+        }
+
+        // If popups are blocked, fall back to same-tab navigation.
+        window.location.href = href;
+        return false;
+    };
+})();
+
 (function initProjectPopupLinks() {
     const links = document.querySelectorAll('.project-popup-link');
     if (!links.length) return;
@@ -173,25 +198,7 @@ function evaluateTrapTemperature(tempC) {
             event.preventDefault();
 
             const href = link.getAttribute('href');
-            if (!href) return;
-
-            // Open projects in a reusable popup window so the portfolio stays visible.
-            const width = Math.min(window.screen.availWidth - 120, 1200);
-            const height = Math.min(window.screen.availHeight - 120, 800);
-            const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
-            const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
-            const features =
-                `width=${width},height=${height},left=${left},top=${top},` +
-                'resizable=yes,scrollbars=yes,toolbar=yes,menubar=yes,location=yes,status=yes';
-
-            const popup = window.open(href, 'projectPreviewWindow', features);
-
-            // If popups are blocked, fall back to same-tab navigation.
-            if (popup) {
-                popup.focus();
-            } else {
-                window.location.href = href;
-            }
+            window.openProjectPopup(href);
         });
     });
 })();
