@@ -463,6 +463,24 @@ footer {
     line-height: 1.6;
 }
 
+/* Extra spacing for C++ downloads page cards */
+.cpp-downloads-list {
+    margin-top: 1.2rem;
+}
+
+.cpp-downloads-list .cpp-project-card {
+    margin-bottom: 1.6rem;
+}
+
+.cpp-downloads-list .cpp-project-card h2 {
+    margin-bottom: 0.85rem;
+}
+
+.cpp-downloads-list .cpp-project-card p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
 /* ============================================================
    Hobby / Interests Page Components
    ============================================================ */
