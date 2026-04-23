@@ -312,6 +312,36 @@
                 Same pricing logic as the C++ program &mdash; runs in your browser.
             </p>
 
+            <!-- Pricing criteria: mirrors C++ decision tree -->
+            <details style="margin:0 0 1.5rem;border:1px solid #e67e22;border-radius:8px;background:#1a252f;overflow:hidden;">
+                <summary style="padding:0.6rem 0.8rem;cursor:pointer;color:#e67e22;font-size:0.88rem;font-weight:700;">
+                    View Pricing Criteria
+                </summary>
+                <div style="padding:0.25rem 0.8rem 0.8rem;overflow-x:auto;">
+                    <table style="width:100%;border-collapse:collapse;color:#cccccc;font-size:0.84rem;line-height:1.4;">
+                        <thead>
+                            <tr style="color:#ffffff;border-bottom:1px solid #e67e22;">
+                                <th style="text-align:left;padding:0.45rem 0.25rem;">Category</th>
+                                <th style="text-align:left;padding:0.45rem 0.25rem;">Condition</th>
+                                <th style="text-align:right;padding:0.45rem 0.25rem;">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding:0.35rem 0.25rem;">Child (0&ndash;5)</td><td style="padding:0.35rem 0.25rem;">Any</td><td style="padding:0.35rem 0.25rem;text-align:right;">$0</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Youth (6&ndash;17)</td><td style="padding:0.35rem 0.25rem;">City employee = Yes</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Youth (6&ndash;17)</td><td style="padding:0.35rem 0.25rem;">City employee = No</td><td style="padding:0.35rem 0.25rem;text-align:right;">$80</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Adult (18&ndash;64)</td><td style="padding:0.35rem 0.25rem;">Income &lt; $15,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$30</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Adult (18&ndash;64)</td><td style="padding:0.35rem 0.25rem;">Income >= $15,000 and City employee = Yes</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Adult (18&ndash;64)</td><td style="padding:0.35rem 0.25rem;">Income >= $15,000 and City employee = No</td><td style="padding:0.35rem 0.25rem;text-align:right;">$100</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income &lt; $15,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$30</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income >= $15,000 and City employee = Yes</td><td style="padding:0.35rem 0.25rem;text-align:right;">$50</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income >= $15,000, City employee = No, Income &lt; $30,000</td><td style="padding:0.35rem 0.25rem;text-align:right;">$70</td></tr>
+                            <tr><td style="padding:0.35rem 0.25rem;">Senior (65+)</td><td style="padding:0.35rem 0.25rem;">Income >= $30,000 and City employee = No</td><td style="padding:0.35rem 0.25rem;text-align:right;">$100</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </details>
+
             <!-- Step: age -->
             <div id="bus-step-age">
                 <label for="bus-age" style="display:block;margin-bottom:0.75rem;font-size:1rem;">Please enter your age:</label>
